@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/head :: head"></head>
+    <body>
+        <header th:replace="fragments/header :: header"></header>
+        <main>
+            <div class="container">
+                <div class="row mt-5">
+                    <div class="col-6">
+                        <form th:action="@{/books/__${action}__}" th:object="${book}" method="post" autocomplete="off">
+                                <input type="hidden" th:field="*{id}">
+                            
+                            <div>
+                                <label for="title" class="form-label">title</label> 
+                                <input type="text"class="form-control" th:field="*{title}" id="title"placeholder="jhondoe2022" >
+                                <div class="text danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+                            </div>
+                            
+                            <div>
+                                <label for="isbn">isbn</label> 
+                                <input type="text" class="form-control" th:field="*{isbn}" id="isbn"placeholder="jhondoe2022">
+                           <div class="text danger" th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}"></div>
+                            </div>
+                            <div>
+                                <label for="year">year</label>
+                                <input type="text" class="form-control" th:field="*{year}" id="year"placeholder="jhondoe2022">
+                            <div class="text danger" th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></div>
+                            </div>
+                            <div>
+                                <label for="copies">copies</label>
+                                <input type="text" class="form-control"th:field="*{copies}" id="copies"placeholder="jhondoe2022" >
+                           <div class="text danger" th:if="${#fields.hasErrors('copies')}" th:errors="*{copies}"></div>
+                            </div>
+                            <div>
+                                <label for="borrowed_copies">boorrowed_copies</label> 
+                                <input type="text"class="form-control" th:field="*{borrowed_copies}" id="boorrowed_copies"placeholder="jhondoe2022">
+                            <div class="text danger" th:if="${#fields.hasErrors('borrowed_copies')}" th:errors="*{borrowed_copies}"></div>
+                            </div>
+                            <div>
+                                <label for="remaining_copies">remaining_copies</label>
+                                <input type="text" class="form-control" th:field="*{remaining_copies}" id="remainig_copies"placeholder="jhondoe2022">
+                            <div class="text danger" th:if="${#fields.hasErrors('remaining_copies')}" th:errors="*{remaining_copies}"></div>
+                            </div>
+                            <div>
+                                <label for="author">author</label>  
+                                <input type="text" class="form-control"th:field="*{author}" id="author"placeholder="jhondoe2022">
+                            <div class="text danger" th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></div>
+                            </div>
+                            <div>
+                                <label for="publisher">publisher</label>  
+                                <input type="text" class="form-control"th:field="*{publisher}" id="publisher"placeholder="jhondoe2022">
+                            <div class="text danger" th:if="${#fields.hasErrors('publisher')}" th:errors="*{publisher}"></div>
+                            </div>
+
+                            <button type="submit"class="btn btn-primary" th:text="${action=='create' ? 'sign up': 'update'}"></button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    </body>
+</html>
